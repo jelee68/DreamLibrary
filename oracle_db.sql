@@ -64,12 +64,8 @@ INSERT  INTO BOOK_TBL VALUES ('2100000101','21','JSP','JSP','20150816','남가�
 INSERT  INTO BOOK_TBL VALUES ('2100000102','21','JSP','JSP','20150816','남가람북스',sysdate,'');
 INSERT  INTO BOOK_TBL VALUES ('2100000103','21','JSP','JSP','20150816','남가람북스',sysdate,'');
 
-INSERT  INTO BOOK_TBL VALUES ('0100000102','01','스프링','코딩단','20150816','남가람북스',sysdate,'');
-INSERT  INTO BOOK_TBL VALUES ('1410000101','14','Spring','코딩단','20150816','남가람북스',sysdate,'');
-INSERT  INTO BOOK_TBL VALUES ('1410000102','14','Spring','코딩단','20150816','남가람북스',sysdate,'');
-INSERT  INTO BOOK_TBL VALUES ('1410000103','14','Spring','코딩단','20150816','남가람북스',sysdate,'');
-INSERT  INTO BOOK_TBL VALUES ('2100000101','21','JSP','JSP','20150816','남가람북스',sysdate,'');
-INSERT  INTO BOOK_TBL VALUES ('2100000102','21','JSP','JSP','20150816','남가람북스',sysdate,'');
-INSERT  INTO BOOK_TBL VALUES ('2100000103','21','JSP','JSP','20150816','남가람북스',sysdate,'');
+INSERT  INTO user_tbl VALUES ('mong','abc1234','김몽이','20090825','대한민국','010-0000-0000','');
+INSERT  INTO user_tbl VALUES ('ppoyang','aaa','뽀양이','20090825','태양계 지구별 906호','010-2222-3333','');
+INSERT  INTO user_tbl VALUES ('hj','1111','김현주','19900508','경기도 의왕시 오전로 63','031-452-0000','1');
 
 commit;

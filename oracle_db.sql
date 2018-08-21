@@ -56,6 +56,41 @@ end;
 
 
 
+-- rent테이블과 book테이블과 join
+
+select r.rent_no, r.book_id, b.book_name, r.book_rent_date, r.book_re_due_date, r.book_status 
+    from rent_tbl r, book_tbl b
+    where r.book_id = b.book_id
+      and r.user_id = ''
+      order by r.book_rent_date;
+      
+-- book table에서 book_name 얻어오는 function
+
+create or replace function fun_getbook_name(book_id varchar2)
+    return varchar2
+is
+    book_name varchar(100);
+begin
+    select 
+        book_name into book_name
+    from book_tbl
+    where book_id = book_id;
+
+    return book_name;
+  
+exception
+    when others then
+        dbms_output.put_line('exception occurred! (' || sqlcode || ') : ' || sqlerrm);
+        return '';
+end;
+
+select rent_no, book_id,  fun_getbook_name(book_id), book_rent_date, book_re_due_date, book_status 
+    from rent_tbl
+    where user_id = ''
+   order by book_rent_date; 
+
+      
+
 INSERT  INTO BOOK_TBL VALUES ('0100000102','01','스프링','코딩단','20150816','남가람북스',sysdate,'');
 INSERT  INTO BOOK_TBL VALUES ('1410000101','14','Spring','코딩단','20150816','남가람북스',sysdate,'');
 INSERT  INTO BOOK_TBL VALUES ('1410000102','14','Spring','코딩단','20150816','남가람북스',sysdate,'');

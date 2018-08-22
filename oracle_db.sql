@@ -90,7 +90,8 @@ select rent_no, book_id,  fun_getbook_name(book_id), book_rent_date, book_re_due
    order by book_rent_date; 
 
 -- MAx값   
-select to_char(max(substr(book_id,3,6))+1,'000000') from book_tbl where book_code = '01';  
+select to_char((decode(max(substr(book_id,3,6)),null,0,max(substr(book_id,3,6))))+1,'000000') 
+from book_tbl where book_code = '01';  
 
 INSERT  INTO BOOK_TBL VALUES ('0100000102','01','스프링','코딩단','20150816','남가람북스',sysdate,'');
 INSERT  INTO BOOK_TBL VALUES ('1410000101','14','Spring','코딩단','20150816','남가람북스',sysdate,'');

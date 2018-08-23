@@ -1,0 +1,24 @@
+<<git-scm.com 다운>>
+
+git  init
+git  config  --global  user.name  “eventia”
+git  config  --global  user.email  “myEmail@gmail.com”
+
+git status
+git add --all .
+git commit -m "설명"
+
+<<github 계정 생성>>
+github.com
+
+<<github 저장>>
+git remote add origin https://github.com/mygitid/myreposit.git
+git push -u origin master
+
+<<warning: LF will be replaced by CRLF in>>
+git config core.autocrlf true
+
+Source변경후
+git add --all .
+git commit -m "commit"
+git push

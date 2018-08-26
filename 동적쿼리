@@ -1,0 +1,30 @@
+CREATE OR REPLACE FUNCTION ZBF_GET_DELIVERY_NM (
+      p_ptnrky in varchar2
+    , p_wareky in varchar2
+) RETURN VARCHAR IS
+ 
+     v_sql VARCHAR2(1000);
+     v_returnValue VARCHAR2(180);
+/******************************************************************************/
+BEGIN
+ 
+    BEGIN
+ 
+        v_sql := ' SELECT B.name01 '||
+                 '   FROM ystdv Y, bzptn B '||
+                 '  WHERE Y.'|| p_wareky ||' = B.ptnrky '||
+                 '    AND Y.ptnrky = '''|| p_ptnrky ||''''
+                 ;
+                
+        EXECUTE IMMEDIATE v_sql INTO v_returnValue;
+ 
+    EXCEPTION
+      WHEN NO_DATA_FOUND THEN
+        v_returnValue := ' ';
+      WHEN OTHERS THEN
+        v_returnValue := ' ';
+    END;
+    
+    RETURN v_returnValue;
+    
+END;

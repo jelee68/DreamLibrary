@@ -1,27 +1,24 @@
-<jsp:include page="uploadbody.jsp" flush="true"/>
- <jsp:param name="sTargetName" value="<%=sTargetName%>"/>
- <jsp:param name="iFileListQty" value="<%=iFileListQty%>"/>
- <jsp:param name="sFormName" value="<%=sFormName%>"/>
- <jsp:param name="sFormAction" value="<%=sFormAction%>"/>
-</jsp:include>
+create or replace function fun_bookstatus(bookId varchar2)
+    return varchar2
+is
+    book_status varchar(1);
+begin
+select book_status into book_status
+  from rent_tbl
+  where book_id = bookId
+    and book_status = '1';
 
---->>>uploadbody.jsp
+    return book_status;
+exception
+    when others then
+        dbms_output.put_line('exception occurred! (' || sqlcode || ') : ' || sqlerrm);
+        return '';
+end;
 
- 
-
-String sTargetName  = request.getParameter("sTargetName");
-String sFormName  = request.getParameter("sFormName");
-String sFormAction  = request.getParameter("sFormAction");
-
- 
-<jsp:include page="uploadbody.jsp" flush="true"/>
-vs
-<jsp:include page="uploadbody.jsp" flush="true"> 
-
-
-<%
-    List<LandingCategory> cats = beanFactory.getLandingCategories();
-%>
-<c:set var="cats" scope="request" value="<%=cats%>"/>
-<jsp:include page="/jsp/modules/index/index_categories.jsp"/>
-
+select book_id, book_name, book_author, book_pub, book_date, 
+       decode(fun_bookstatus(book_id),null,'대출가능','대출중') as book_status
+  from book_tbl
+ where book_name like '%'|| '스프링' ||'%' 
+    or book_name like '%'|| 'Spring' ||'%' 
+    and book_pub like '%'|| '북스' ||'%' 
+  order by book_id asc;

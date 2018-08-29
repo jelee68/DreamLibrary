@@ -54,7 +54,10 @@ begin
   where book_id=:old.book_id;
 end;
 
-
+-- 컬럼 추가
+ALTER table user_tbl ADD(
+    enabled varchar2(1) default '1'
+);
 
 -- rent테이블과 book테이블과 join
 

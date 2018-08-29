@@ -1,19 +1,20 @@
+Spring Security를 이용하여 사용자의 정보를 찾는 방법
+Spring Security를 사용하다 보면 현재 세션 사용자의 정보를 알아야 하는 경우가 발생한다.
+그런 경우 다음 방법을 사용할 수 있다.
 
-select BOOK_SEARCH_01('book_name','Spring') as book_id from book_tbl;
+1. SpringContextHolder를 이용하는 방법
+Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+System.out.println(authentication.getName());
 
-select  book_id
- from book_tbl 
- where book_name like '%'||'Spring'||'%'  order by book_id asc ;
+2. Controller 의 경우 메서드 인자로 받는 방법
+@RequestMapping("/")
+    public String index(Principal principal) {
+        System.out.println(principal.getName());
+        return "index";
+    }
 
-
-	select rownum, b.book_id, b.book_name, b.book_author, b.book_pub, b.book_date, b.book_imgPath, 
-                 decode(r.book_status, null ,'대출가능',0,'대출가능','대출중')
-	  from book_tbl b, rent_tbl r 
-      where b.book_id = r.book_id(+)
-        and book_name like '%'|| 'Sp' ||'%'  order by b.book_id asc;
-
-	select rownum, b.book_id, b.book_name, b.book_author, b.book_pub, b.book_date, b.book_imgPath, 
-                 decode(r.book_status, null ,'대출가능',0,'대출가능','대출중')
-	  from book_tbl b, rent_tbl r 
-      where b.book_id = r.book_id(+)
-        and b.book_name like '%'|| '소나' ||'%'  order by b.book_id asc;
+3. User 클래스로 형변환하여 정보를 조회하는 방법
+User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+System.out.println(user.getUsername());
+ 
+이때 User 클래스는 org.springframework.security.core.userdetails.User이다.

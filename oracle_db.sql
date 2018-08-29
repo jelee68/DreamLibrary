@@ -6,7 +6,8 @@ CREATE TABLE user_tbl (
   user_birth varchar2(8) NOT NULL,
   user_addr varchar2(100) NOT NULL,
   user_tel varchar2(15),
-  adm_check varchar2(1) default '0'
+  adm_check varchar2(1) default '0',
+  enabled varchar2(1) default '1'
 );
 
 

@@ -20,6 +20,7 @@ CREATE TABLE book_tbl (
   book_pub  varchar2(100) NOT NULL,
   book_in_date date,
   book_imgPath varchar2(100),
+  book_del varchar2(1) default '0',
   PRIMARY KEY (book_id)
 );
 

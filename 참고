@@ -18,3 +18,8 @@ User user = (User) SecurityContextHolder.getContext().getAuthentication().getPri
 System.out.println(user.getUsername());
  
 이때 User 클래스는 org.springframework.security.core.userdetails.User이다.
+
+
+https://www.logicbig.com/tutorials/spring-framework/spring-web-mvc/jasper-report-view.html
+https://www.baeldung.com/spring-jasper
+https://m.blog.naver.com/minis24/80097462536

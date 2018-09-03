@@ -23,3 +23,17 @@ System.out.println(user.getUsername());
 https://www.logicbig.com/tutorials/spring-framework/spring-web-mvc/jasper-report-view.html
 https://www.baeldung.com/spring-jasper
 https://m.blog.naver.com/minis24/80097462536
+
+
+    <role rolename="admin" />
+    <role rolename="admin-gui" />
+    <role rolename="admin-script" />
+    <role rolename="manager" />
+    <role rolename="manager-gui" />
+    <role rolename="manager-script" />
+    <role rolename="manager-jmx" />
+    <role rolename="manager-status" />
+    <user username="admin"
+         password="admin" roles="admin ,manager ,admin-gui ,
+                       admin-script ,manager-gui ,manager-script ,
+                       manager-jmx ,manager-status" />

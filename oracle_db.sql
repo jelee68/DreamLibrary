@@ -21,6 +21,7 @@ CREATE TABLE book_tbl (
   book_in_date date,
   book_imgPath varchar2(100),
   book_del varchar2(1) default '0',
+  book_status varchar2(1) default '0',  
   PRIMARY KEY (book_id)
 );
 
@@ -31,7 +32,7 @@ CREATE TABLE rent_tbl (
   book_rent_date date NOT NULL,
   book_re_due_date date NOT NULL,
   book_re_date date,
-  book_status varchar2(1) default '1',
+  rent_status varchar2(1) default '1',
   PRIMARY KEY (rent_no),
   foreign key(user_id) references user_tbl(user_id),
   foreign key(book_id) references book_tbl(book_id)
